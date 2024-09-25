@@ -1,9 +1,12 @@
 package com.agenda.contactos;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 public class Contact {
     private int id;
     private String address;
-    private String cell_phone;
+    private String cellPhone;
     private String email;
     private String gender;
     private String identification;
@@ -13,14 +16,15 @@ public class Contact {
     public Contact() {}
 
     // Constructor con todos los campos
-    public Contact(int id, String address, String cell_phone, String email, String gender, String identification, String name) {
+    @JsonPropertyOrder({ "id", "identification", "name", "address", "cellPhone", "email", "gender" })
+    public Contact(int id, String identification, String name, String address, String cellPhone, String email, String gender ) {
         this.id = id;
+        this.identification = identification;
+        this.name = name;        
         this.address = address;
-        this.cell_phone = cell_phone;
+        this.cellPhone = cellPhone;
         this.email = email;
         this.gender = gender;
-        this.identification = identification;
-        this.name = name;
     }
 
     // Getters y Setters
@@ -33,6 +37,22 @@ public class Contact {
         this.id = id;
     }
 
+    public String getIdentification() {
+        return identification;
+    }
+
+    public void setIdentification(String identification) {
+        this.identification = identification;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }    
+
     public String getAddress() {
         return address;
     }
@@ -41,12 +61,13 @@ public class Contact {
         this.address = address;
     }
 
-    public String getCell_phone() {
-        return cell_phone;
+    //@JsonProperty("cellPhone")
+    public String getcellPhone() {
+        return cellPhone;
     }
 
-    public void setCell_phone(String cell_phone) {
-        this.cell_phone = cell_phone;
+    public void setcellPhone(String cellPhone) {
+        this.cellPhone = cellPhone;
     }
 
     public String getEmail() {
@@ -65,33 +86,22 @@ public class Contact {
         this.gender = gender;
     }
 
-    public String getIdentification() {
-        return identification;
-    }
 
-    public void setIdentification(String identification) {
-        this.identification = identification;
-    }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     // Método toString para facilitar la impresión del objeto Contact
     @Override
     public String toString() {
         return "Contact{" +
                 "id=" + id +
-                ", address='" + address + '\'' +
-                ", cell_phone='" + cell_phone + '\'' +
-                ", email='" + email + '\'' +
-                ", gender='" + gender + '\'' +
                 ", identification='" + identification + '\'' +
                 ", name='" + name + '\'' +
+                ", address='" + address + '\'' +                
+                ", cellPhone='" + cellPhone + '\'' +
+                ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +              
+                
                 '}';
     }
 }
