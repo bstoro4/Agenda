@@ -3,20 +3,20 @@ package com.agenda.contactos;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonPropertyOrder({ "id", "identification", "name", "address", "cellPhone", "email", "gender" })
 public class Contact {
     private int id;
+    private String identification;
+    private String name;
     private String address;
     private String cellPhone;
     private String email;
     private String gender;
-    private String identification;
-    private String name;
 
     // Constructor vacío
     public Contact() {}
 
     // Constructor con todos los campos
-    @JsonPropertyOrder({ "id", "identification", "name", "address", "cellPhone", "email", "gender" })
     public Contact(int id, String identification, String name, String address, String cellPhone, String email, String gender ) {
         this.id = id;
         this.identification = identification;
@@ -29,6 +29,7 @@ public class Contact {
 
     // Getters y Setters
 
+    @JsonProperty("id")
     public int getId() {
         return id;
     }
@@ -37,6 +38,7 @@ public class Contact {
         this.id = id;
     }
 
+    @JsonProperty("identification")
     public String getIdentification() {
         return identification;
     }
@@ -45,6 +47,7 @@ public class Contact {
         this.identification = identification;
     }
 
+    @JsonProperty("name")
     public String getName() {
         return name;
     }
@@ -53,6 +56,7 @@ public class Contact {
         this.name = name;
     }    
 
+    @JsonProperty("address")
     public String getAddress() {
         return address;
     }
@@ -61,7 +65,7 @@ public class Contact {
         this.address = address;
     }
 
-    //@JsonProperty("cellPhone")
+    @JsonProperty("cellPhone")
     public String getcellPhone() {
         return cellPhone;
     }
@@ -70,6 +74,7 @@ public class Contact {
         this.cellPhone = cellPhone;
     }
 
+    @JsonProperty("email")
     public String getEmail() {
         return email;
     }
@@ -78,6 +83,7 @@ public class Contact {
         this.email = email;
     }
 
+    @JsonProperty("gender")
     public String getGender() {
         return gender;
     }
